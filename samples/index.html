@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>charm.js</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/q.js"></script>
+    <script src="../dist/charm.js"></script>
+    <script language="javascript">
+        $(document).ready(function(){
+            var options = {
+                prefix: 'https://api.github.com',
+                promise: Q
+            }
+
+            var router = charm(options)
+            router.parse('users/:username/repos')
+            router.users('wvv8oo').repos().jsonp().then(function(result){
+                var html = ''
+                for(var i = 0; i < result.data.length; i ++){
+                    var item = result.data[i]
+                    html += '<li><a href="' + item.html_url + '" target="_blank">' + item.name + '</a>'
+                }
+
+                $('#repos').html(html)
+            })
+        })
+    </script>
+
+    <style type="text/css">
+        h2{
+            font-size: 16px;
+            font-weight: normal;
+            color: #666;
+        }
+
+        section{
+            margin: 100px auto;
+            width: 600px;
+        }
+
+        ul, li{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>charm.js</h1>
+        <h2>用更优雅的方式调用RESTful APIs</h2>
+
+        <h3>其它项目</h3>
+        <ul id="repos">
+        </ul>
+    </section>
+</body>
+</html>
