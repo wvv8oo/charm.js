@@ -29,10 +29,10 @@
 
       @_addMethod funcName, method for funcName, method of methods
 
-
     #添加字符与数字形式的param
     _addPlainParam: (param, index)->
       placeholder = @segmentModel.placeholders[index]
+      return if not placeholder
       @params[index] = key: placeholder.key, value: String(param)
 
     #添加对象类型的参数
