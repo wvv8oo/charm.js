@@ -3,7 +3,7 @@
 
 以更优雅的方式调用RESTful APIs，在`charm.js`中，你可以使用`router.project(1).issue(2).retrieve()`这样的方式来调用你的API。
 
-##过去
+## 过去
 
 ```
 var project_id = '5433d5e4e737cbe96dcef312'
@@ -34,7 +34,7 @@ $.ajax({
 //.... 更多的代码
 ```
 
-##现在
+## 现在
 
 ```
 var router = charm(options)
@@ -65,13 +65,19 @@ router.project(project_id).issue().create({name: 'issue name'}).then(callback)
 
 ```
 
-#如何使用
+# 如何使用
 
 ## 新手入门
 
+### node
+
+1. `npm install charm.js`
+2. `var charm = require('charm.js')`
+
+### browser
 将`dist/charm.js`复制到你的项目中并引入，如`<script src="js/charm.js"></script>`。如果你在项目中使用了coffee，那么你也可以直接引入`src/charm.coffee`，推荐使用[silky](http://github.com/wvv8oo/silky)来实时编译coffee。
 
-###常规使用
+### 常规使用
 
 ```
 var router = charm(options)
@@ -189,4 +195,3 @@ console.log(router.project(1).issue(2).toString())
 console.log(router.project(1).toString())
 //打印结果为：/api/project/1.html
 ```
-

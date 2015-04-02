@@ -24,7 +24,14 @@
 
     #批量添加方法
     _addMethods: ->
-      map = post: 'create', put: 'update', patch: 'patch', delete: 'delete', get: 'retrieve', jsonp: 'jsonp'
+      map =
+        post: 'create'
+        put: 'update'
+        patch: 'patch'
+        delete: 'delete'
+        get: 'retrieve'
+        jsonp: 'jsonp'
+
       methods = @segmentModel.options.methods || map
 
       @_addMethod funcName, method for funcName, method of methods
